@@ -100,7 +100,7 @@ $(function(){
               self.nowState("接続中");
               self.qims.service("ALTextToSpeech")
               .done(function (tts) {
-                  tts.say("せつぞく成功しました。");
+                  tts.say("せつぞく、ぺっぷ");
               });
               setupIns_();
             })
@@ -153,20 +153,164 @@ $(function(){
             }
         }
 
+        //-- 操作パネル -- 
+        var genCtrlPad = function(id,name,color,callback,reset)
+        {
+            return {
+                id:   id,
+                name: name,
+                click:function(data,event)
+                {
+                    var padElm = $('#ctrlPad',$("#"+id));
+                    if ( event.target == padElm[0] )
+                    {
+                        var ratio_x = event.offsetX/padElm.width();
+                        var ratio_y = event.offsetY/padElm.height();
+                        if(callback(ratio_x,ratio_y))
+                        {
+                            $('#ctrlPadPoint',$("#"+id)).css({
+                                top: event.offsetY-5,
+                                left:event.offsetX-5
+                            });
+                        }
+                    }
+                },
+                color:color,
+                reset:function(){
+                    if(reset)
+                    {
+                        var padElm = $('#ctrlPad',$("#"+id));
+                        if(reset()){
+                            $('#ctrlPadPoint',$("#"+id)).css({
+                                top: padElm.height()/2-5,
+                                left:padElm.width() /2-5,
+                            });
+                        }
+                    }
+                },
+            };
+        };
+        var genCtrlSlider = function(id,name,callback,reset)
+        {
+            var value = ko.observable();
+            value.subscribe(function(data){
+                var ratio = data/100.0;
+                callback(ratio);
+            });
+            return {
+                id:   id,
+                name: name,
+                value:value,
+                reset:function(){
+                    if(reset)
+                    {
+                        var padElm = $('#ctrlPad',$("#"+id));
+                        if(reset()){
+                            value(50);
+                        }
+                    }
+                },
+            };
+        };
+                
+        self.ctrlObjHead = genCtrlPad("headCtrl","あたま上下/左右","gray",function(ratio_x, ratio_y){
+            if(self.alMotion)
+            {
+                var angYaw   = (2.0857 - -2.0857)*ratio_x + -2.0857;
+                var angPitch = (0.6371 - -0.7068)*ratio_y + -0.7068;
+                
+                var name  = ['HeadYaw','HeadPitch'];
+                var angle = [angYaw, angPitch];
+                self.alMotion.angleInterpolationWithSpeed(name, angle, 0.4)
+                  .fail(function(err){
+                      console.log(err);
+                  });
+                return true;
+            }
+            return false;
+        },
+        function(){
+            if(self.alMotion){
+                self.alMotion.angleInterpolationWithSpeed(['HeadYaw','HeadPitch'], [0,0], 0.4);
+            }
+        });
 
+        self.ctrlObjBody = genCtrlPad("bodyCtrl","からだ前後/左右","gray",function(ratio_x, ratio_y){
+            if(self.alMotion)
+            {
+                var angRoll   = (0.5149 - -0.5149)*ratio_x + -0.5149;
+                var angPitch = (1.0385 - -1.0385)*ratio_y + -1.0385;
+
+                var name  = ['HipRoll','HipPitch'];
+                var angle = [angRoll,angPitch];
+                self.alMotion.angleInterpolationWithSpeed(name, angle, 0.4)
+                  .fail(function(err){
+                      console.log(err);
+                  });
+                return true;
+            }
+            return false;
+        },
+        function(){
+            if(self.alMotion){
+                self.alMotion.angleInterpolationWithSpeed(['HipRoll','HipPitch'], [0,0], 0.4);
+            }
+        });
+        var mvLastX = 0;
+        var mvLastY = 0;
+        var mvLastTheta = 0;
+        self.ctrlObjMove = genCtrlPad("moveCtrl","移動","gray",function(ratio_x, ratio_y){
+            if(self.alMotion)
+            {
+                mvLastX=-(ratio_y-0.5)*2;
+                mvLastY=-(ratio_x-0.5)*2;
+                self.alMotion.moveToward(mvLastX, mvLastY, mvLastTheta).fail(function(err){
+                    console.log(err);
+                });
+                return true;
+            }
+            return false;
+        },
+        function(){
+            if(self.alMotion)
+            {
+                mvLastX=0;
+                mvLastY=0;
+                self.alMotion.moveToward(mvLastX, mvLastY, mvLastTheta).fail(function(err){
+                    console.log(err);
+                });
+                return true;
+            }
+        });
+        self.ctrlObjMoveRot = genCtrlSlider("moveRotCtrl","回転",function(ratio){
+            if(self.alMotion)
+            {
+                mvLastTheta = (ratio-0.5)*2;
+                self.alMotion.moveToward(mvLastX, mvLastY, mvLastTheta);
+                return true;
+            }
+            return false;
+        },
+        function(){
+            if(self.alMotion)
+            {
+                mvLastTheta=0;
+                self.alMotion.moveToward(mvLastX, mvLastY, mvLastTheta);
+                return true;
+            }
+            return false;
+        });
     };
 
     ko.applyBindings(new MyModel());
 
-/*
 
+/*
     function error(err)
     {
       console.error(err);
     }
-
     var session = new QiSession("192.168.11.17");
-
     session.socket()
      .on('connect', function () {
       console.log('QiSession connected!');
@@ -175,11 +319,9 @@ $(function(){
      .on('disconnect', function () {
       console.log('QiSession disconnected!');
     });
-
     session.service("ALTextToSpeech")
     .done(function (tts) {
       // tts is a proxy to the ALTextToSpeech service
-
       tts.say("あうーあうーあう")
         .done(function (lang) {
            console.log("I speak " + lang);
@@ -191,7 +333,6 @@ $(function(){
     .fail(function (error) {
       console.log("An error occurred:", error);
     });
-
 */
 
 
