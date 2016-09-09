@@ -86,7 +86,7 @@ $(function(){
               self.cameraIns = new Camera(self.alVideoDevice);
             });  
         }
-
+tt
         self.connect = function() 
         {
             var ip = 
@@ -100,7 +100,7 @@ $(function(){
               self.nowState("接続中");
               self.qims.service("ALTextToSpeech")
               .done(function (tts) {
-                  tts.say("せつぞく、ぺっぷ");
+                  tts.say("せつぞく、成功しました。");
               });
               setupIns_();
             })
@@ -161,47 +161,47 @@ $(function(){
             {
                 switch (to){
 			case 0: //右
-				self.alMotion.moveToward(0, 0.5, 0).fail(function(err){console.log(err);});
+				self.alMotion.moveTo(0, 0.5, 0).fail(function(err){console.log(err);});
 				break;
 
 			case 1: //左
-				self.alMotion.moveToward(0, -0.5, 0).fail(function(err){console.log(err);});
+				self.alMotion.moveTo(0, -0.5, 0).fail(function(err){console.log(err);});
 				break;
 
 			case 2: //前
-				self.alMotion.moveToward(0.3, 0, 0).fail(function(err){console.log(err);});
+				self.alMotion.moveTo(0.3, 0, 0).fail(function(err){console.log(err);});
 				break;
 
 			case 3: //後
-				self.alMotion.moveToward(-0.3, 0, 0).fail(function(err){console.log(err);});
+				self.alMotion.moveTo(-0.3, 0, 0).fail(function(err){console.log(err);});
 				break;
 
 			case 4: //右前
-				self.alMotion.moveToward(0.3, -0.3, 0).fail(function(err){console.log(err);});
+				self.alMotion.moveTo(0.3, -0.3, 0).fail(function(err){console.log(err);});
 				break;
 
 			case 5: //左前
-				self.alMotion.moveToward(0.3, 0.3, 0).fail(function(err){console.log(err);});
+				self.alMotion.moveTo(0.3, 0.3, 0).fail(function(err){console.log(err);});
 				break;
 
 			case 6: //右後
-				self.alMotion.moveToward(-0.3, -0.3, 0).fail(function(err){console.log(err);});
+				self.alMotion.moveTo(-0.3, -0.3, 0).fail(function(err){console.log(err);});
 				break;
 
 			case 7: //左後
-				self.alMotion.moveToward(-0.3, 0.3, 0).fail(function(err){console.log(err);});
+				self.alMotion.moveTo(-0.3, 0.3, 0).fail(function(err){console.log(err);});
 				break;
 
 			case 8:　//右振向き
-				self.alMotion.moveToward(0, 0, -20).fail(function(err){console.log(err);});
+				self.alMotion.moveTo(0, 0, -20).fail(function(err){console.log(err);});
 				break;
 
 			case 9: //左振向き
-				self.alMotion.moveToward(0, 0, 20).fail(function(err){console.log(err);});
+				self.alMotion.moveTo(0, 0, 20).fail(function(err){console.log(err);});
 				break;
 
 			case 10:　//真ん中
-				self.alTextToSpeech.say("愛してるよ。");
+				self.tts.say("愛してるよ。");
 				break;
             		}
         	}
