@@ -157,7 +157,7 @@ $(function(){
             }
         }
 
-
+/*
        // -- コントロールラー --
         self.move = function(text) 
         {
@@ -210,6 +210,8 @@ $(function(){
             		}
         	}
    	}
+ 
+*/ 
         
         // -- アプリ起動ー --
         self.action = function(text) 
