@@ -18,6 +18,24 @@
   <script type="text/javascript" src="js/pikachu.js"></script>
 </head>
 <body>
+	
+ <script type="text/html" id="controlPadTmpl">
+    <div data-bind="attr:{id:id}" class="noSelect">
+       <div data-bind="text:name"></div>
+       <div id="ctrlPad" class="ctrlPad" data-bind="{click:click, style:{background:color}}">
+         <div id="ctrlPadPoint" class="ctrlPadPoint">
+         </div>
+       </div>
+       <button class="ctrlPadResetBtn" data-bind="{click:reset}">リセット</div>
+    </div>
+  </script>
+  <script type="text/html" id="controlSliderTmpl">
+    <div data-bind="attr:{id:id}" class="noSelect">
+       <div data-bind="text:name"></div>
+       <input type="range" min="0" max="100" id="ctrlSlider" class="ctrlSlider" data-bind="value:value"></input>
+       <button class="ctrlPadResetBtn" data-bind="{click:reset}">リセット</button>
+    </div>
+  </script>
 
   <div data-role="page" style="background-image: linear-gradient(#8b9da9, #fff6e4);"> 
     <div data-role="header">
