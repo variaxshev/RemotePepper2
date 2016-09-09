@@ -278,6 +278,7 @@ $(function(){
                 },
             };
         };
+        
         var genCtrlSlider = function(id,name,callback,reset)
         {
             var value = ko.observable();
@@ -388,6 +389,7 @@ $(function(){
             }
             return false;
         });
+        
     };
 
     ko.applyBindings(new MyModel());
@@ -422,6 +424,5 @@ $(function(){
       console.log("An error occurred:", error);
     });
 */
-
 
 });
