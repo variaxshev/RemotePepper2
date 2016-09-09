@@ -270,8 +270,10 @@ $(function(){
                         var padElm = $('#ctrlPad',$("#"+id));
                         if(reset()){
                             $('#ctrlPadPoint',$("#"+id)).css({
-                                top: padElm.height()/2-5,
-                                left:padElm.width() /2-5,
+                                //top: padElm.height()/2-5,
+                                //left:padElm.width() /2-5,
+                                top: 140px,
+                                left: 140px,
                             });
                         }
                     }
