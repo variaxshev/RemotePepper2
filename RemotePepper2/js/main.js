@@ -202,7 +202,7 @@ $(function(){
 				break;
 
 			case 10:　//真ん中
-				self.tts.say("愛してるよ。");
+				self.alTextToSpeech.say("愛してるよ。");
 				break;
             		}
         	}
