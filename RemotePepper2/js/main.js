@@ -171,10 +171,12 @@ $(function(){
 
 			case 2: //前
 				self.alMotion.moveToward(0.3, 0, 0).fail(function(err){console.log(err);});
+				return true;
 				break;
 
 			case 3: //後
 				self.alMotion.moveToward(-0.3, 0, 0).fail(function(err){console.log(err);});
+				return true;
 				break;
 
 			case 4: //右前
