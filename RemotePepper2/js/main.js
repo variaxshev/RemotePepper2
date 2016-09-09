@@ -81,7 +81,7 @@ $(function(){
             self.qims.service("ALRobotPosture").done(function(ins){
               self.alRobotPosture = ins;
             });
-            self.qims.service("ALBehavior").done(function(ins){
+            self.qims.service("ALBehaviorManager").done(function(ins){
               self.alBehavior = ins;
             });
             self.qims.service("ALVideoDevice").done(function(ins){
