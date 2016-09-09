@@ -208,6 +208,30 @@ $(function(){
         	}
    	}
         
+        // -- アプリ起動ー --
+        self.action = function(text) 
+        {
+                switch (text){
+			case 0:
+				self.alBehavior.stopAllBehaviors();
+				break;
+			case 1:
+				self.alBehavior.startBehavior("qrreader-165fd0/behavior_1");
+				break;
+			case 2:
+				self.alBehavior.startBehavior("pepper_self_introduction_waist_sample/.");
+				break;
+			case 3:
+				self.alBehavior.runBehavior("animations/Stand/Emotions/Negative/Sad_1");
+				break;
+			case 4:
+				self.alBehavior.runBehavior("animations/Stand/Emotions/Positive/Laugh_1");
+				break;
+			case 5:
+				self.alBehavior.runBehavior("animations/Stand/Gestures/Angry_1");
+				break;
+			}
+        }
         
         //-- 操作パネル -- 
         var genCtrlPad = function(id,name,color,callback,reset)
