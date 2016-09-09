@@ -344,12 +344,12 @@ body1 {
     display:inline-block;
 }
 .ctrlPadPoint{
-    width: 10px;    
-    height: 10px;
+    width: 15px;    
+    height: 15px;
     background: red;    
     position: absolute;
-    top: 95px;
-    left: 95px;
+    top: 145px;
+    left: 145px;
 }
 .ctrlPadResetBtn{
     display:inline-block;
