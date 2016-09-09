@@ -80,8 +80,3 @@ function action(num){
 
 	}
 }
-
-function toTabletHandler(value) {
-        console.log("PepperQiMessaging/Recoイベント発生: " + value);
-        $(".memory").text(value);
-}
