@@ -353,8 +353,9 @@ body1 {
 }
 .ctrlPadResetBtn{
     display:inline-block;
-    border-radius: 0.5em;
-    width:5em;
+    border-radius: 2px;
+    width:80px;
+    height:40px;
     padding:0px;
     margin:0px;
 }
