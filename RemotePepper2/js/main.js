@@ -81,6 +81,9 @@ $(function(){
             self.qims.service("ALRobotPosture").done(function(ins){
               self.alRobotPosture = ins;
             });
+            self.qims.service("ALBehavior").done(function(ins){
+              self.alBehavior = ins;
+            });
             self.qims.service("ALVideoDevice").done(function(ins){
               self.alVideoDevice = ins;
               self.cameraIns = new Camera(self.alVideoDevice);
@@ -211,6 +214,8 @@ $(function(){
         // -- アプリ起動ー --
         self.action = function(text) 
         {
+            if(self.alBehavior)
+            {
                 switch (text){
 			case 0:
 				self.alBehavior.stopAllBehaviors();
@@ -231,6 +236,7 @@ $(function(){
 				self.alBehavior.runBehavior("animations/Stand/Gestures/Angry_1");
 				break;
 			}
+            	}
         }
         
         //-- 操作パネル -- 
