@@ -348,8 +348,8 @@ body1 {
     height: 15px;
     background: red;    
     position: absolute;
-    top: 145px;
-    left: 145px;
+    top: 140px;
+    left: 140px;
 }
 .ctrlPadResetBtn{
     display:inline-block;
