@@ -86,7 +86,7 @@ $(function(){
               self.cameraIns = new Camera(self.alVideoDevice);
             });  
         }
-tt
+        
         self.connect = function() 
         {
             var ip = 
@@ -108,6 +108,7 @@ tt
               self.nowState("切断");
             });
         };
+        
         // -- 音量 --
         self.nowVolume = ko.observable("？");
         self.volumeAdd = function(diff){
