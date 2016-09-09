@@ -337,25 +337,24 @@ body1 {
  }
 
 .ctrlPad{
-    width: 300px;    
-    height: 300px;
+    width: 200px;    
+    height: 200px;
     background: deepskyblue;
     position: relative;
     display:inline-block;
 }
 .ctrlPadPoint{
-    width: 15px;    
-    height: 15px;
+    width: 10px;    
+    height: 10px;
     background: red;    
     position: absolute;
-    top: 140px;
-    left: 140px;
+    top: 95px;
+    left: 95px;
 }
 .ctrlPadResetBtn{
     display:inline-block;
-    border-radius: 15px;
-    width:180px;
-    height:60px;
+    border-radius: 0.5em;
+    width:5em;
     padding:0px;
     margin:0px;
 }
