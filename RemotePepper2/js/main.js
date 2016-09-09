@@ -156,11 +156,11 @@ $(function(){
 
 
        // -- コントロールラー --
-        self.move = function(to) 
+        self.move = function(text) 
         {
             if(self.alMotion)
             {
-                switch (to){
+                switch (text){
 			case 0: //右
 				self.alMotion.moveTo(0, 0.5, 0).fail(function(err){console.log(err);});
 				break;
