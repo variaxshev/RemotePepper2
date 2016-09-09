@@ -223,10 +223,10 @@ $(function(){
 				self.alBehavior.stopAllBehaviors();
 				break;
 			case 1:
-				self.alBehavior.startBehavior("qrreader-165fd0/behavior_1");
+				self.alBehavior.runBehavior("qrreader-165fd0/behavior_1");
 				break;
 			case 2:
-				self.alBehavior.startBehavior("pepper_self_introduction_waist_sample/.");
+				self.alBehavior.runBehavior("pepper_self_introduction_waist_sample/.");
 				break;
 			case 3:
 				self.alBehavior.runBehavior("animations/Stand/Emotions/Negative/Sad_1");
