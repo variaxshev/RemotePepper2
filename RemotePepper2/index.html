@@ -49,9 +49,9 @@
           <input type="text" class="input__input" placeholder="ひら・カナ・漢字で入力してください。" data-bind="value: $root.textTalkValue" data-clear-btn="true" />
           <label style="color: gray;">ヒント：pikachu</label>
           <button style="font-size: 20pt;" data-bind="click: $root.talk($root.textTalkValue())">通信</button>
-          <a onclick="action(3)"><img src="images/boy_cry_icon.png" style="height: 200px; width: 170px"></a>
-	  <a onclick="action(4)"><img src="images/banzai_girl_icon.png" style="height: 230px; width: 220px"></a>
-	  <a onclick="action(5)"><img src="images/papa_okoru_icon.png" style="height: 220px; width: 190px"></a>
+          <button data-bind="click: $root.action(3)"><img src="images/boy_cry_icon.png" style="height: 200px; width: 170px"></button>
+	  <button data-bind="click: $root.action(4)"><img src="images/banzai_girl_icon.png" style="height: 230px; width: 220px"></button>
+	  <button data-bind="click: $root.action(5)"><img src="images/papa_okoru_icon.png" style="height: 220px; width: 190px"></button>
         </div>
         
         <div>
@@ -127,9 +127,9 @@
         <br>
         <br>
           <p><span>アプリを選ぶ</span></p>
-    <button style="font-size: 20pt;" onclick="action(0)">ストップ</button>
-		<a onclick="action(1)"><img src="images/ojigi_boy_icon.png" style="height: 200px; width: 170px"></a>
-		<a onclick="action(2)"><img src="images/chair_girl_icon.png" style="height: 200px; width: 170px"></a>
+    <button style="font-size: 20pt;" data-bind="click: $root.action(0)">ストップ</button>
+		<button data-bind="click: $root.action(1)"><img src="images/ojigi_boy_icon.png" style="height: 200px; width: 170px"></button>
+		<button data-bind="click: $root.action(2)""><img src="images/chair_girl_icon.png" style="height: 200px; width: 170px"></button>
         </div>
         
     </div><!-- /content -->
